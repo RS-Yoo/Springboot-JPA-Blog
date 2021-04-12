@@ -28,7 +28,6 @@
 		}).done(function(resp) {
 			// 성공했을 때
 			alert("Registration complete.");
-			alert(resp);
 			location.href = "/blog";
 		}).fail(function(error) {
 			//실패했을 때
