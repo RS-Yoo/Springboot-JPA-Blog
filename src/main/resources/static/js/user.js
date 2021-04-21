@@ -3,32 +3,6 @@
 		$("#btn-save").on("click", () => {
 			this.save();
 		});
-		$("#btn-login").on("click", () => {
-			this.login();
-		});
-	},
-
-	login: function() {
-		//alert('user의 save함수 호출됨');
-		let data = {
-			username: $("#username").val(),
-			password: $("#password").val(),
-		};
-		
-		$.ajax( {
-			type: "POST",
-			url: "/api/user/login",
-			data: JSON.stringify(data), // http body data
-			contentType: "application/json; charset=utf-8", // body data type(MIME)
-			dataType: "json" // 요청에 대한 응답이 왔을 때 기본적으로 모든 것이 문자열 // 생긴 게 json이라면 js오브젝트로 변경
-		}).done(function(resp) {
-			// 성공했을 때
-			alert("Login complete.");
-			location.href = "/";
-		}).fail(function(error) {
-			//실패했을 때
-			alert(JSON.stringify(error));
-		}); 
 	},
 	
 		save: function() {
@@ -47,7 +21,7 @@
 		$.ajax( {
 			// 회원가입 수행 요청
 			type: "POST",
-			url: "/api/user",
+			url: "/auth/joinProc",
 			data: JSON.stringify(data), // http body data
 			contentType: "application/json; charset=utf-8", // body data type(MIME)
 			dataType: "json" // 요청에 대한 응답이 왔을 때 기본적으로 모든 것이 문자열 // 생긴 게 json이라면 js오브젝트로 변경
