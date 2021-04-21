@@ -13,7 +13,7 @@
 <body>
 
 	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-		<a class="navbar-brand" href="/blog">TDsee</a>
+		<a class="navbar-brand" href="/">TDsee</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -22,15 +22,15 @@
 			<c:choose>
 				<c:when test="${empty sessionScope.principal }">
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link" href="/blog/user/loginForm">Login</a></li>
-						<li class="nav-item"><a class="nav-link" href="/blog/user/joinForm">Join</a></li>
+						<li class="nav-item"><a class="nav-link" href="/loginForm">Login</a></li>
+						<li class="nav-item"><a class="nav-link" href="/joinForm">Join</a></li>
 					</ul>
 				</c:when>
 				<c:otherwise>
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link" href="/blog/board/writeForm">Post</a></li>
-						<li class="nav-item"><a class="nav-link" href="/blog/user/userForm">My Info</a></li>
-						<li class="nav-item"><a class="nav-link" href="/blog/user/logout">Logout</a></li>
+						<li class="nav-item"><a class="nav-link" href="/board/form">Post</a></li>
+						<li class="nav-item"><a class="nav-link" href="/user/form">My Info</a></li>
+						<li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
 					</ul>
 				</c:otherwise>
 			</c:choose>

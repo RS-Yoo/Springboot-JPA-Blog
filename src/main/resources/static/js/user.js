@@ -17,14 +17,14 @@
 		
 		$.ajax( {
 			type: "POST",
-			url: "/blog/api/user/login",
+			url: "/api/user/login",
 			data: JSON.stringify(data), // http body data
 			contentType: "application/json; charset=utf-8", // body data type(MIME)
 			dataType: "json" // 요청에 대한 응답이 왔을 때 기본적으로 모든 것이 문자열 // 생긴 게 json이라면 js오브젝트로 변경
 		}).done(function(resp) {
 			// 성공했을 때
 			alert("Login complete.");
-			location.href = "/blog";
+			location.href = "/";
 		}).fail(function(error) {
 			//실패했을 때
 			alert(JSON.stringify(error));
@@ -47,14 +47,14 @@
 		$.ajax( {
 			// 회원가입 수행 요청
 			type: "POST",
-			url: "/blog/api/user",
+			url: "/api/user",
 			data: JSON.stringify(data), // http body data
 			contentType: "application/json; charset=utf-8", // body data type(MIME)
 			dataType: "json" // 요청에 대한 응답이 왔을 때 기본적으로 모든 것이 문자열 // 생긴 게 json이라면 js오브젝트로 변경
 		}).done(function(resp) {
 			// 성공했을 때
 			alert("Registration complete.");
-			location.href = "/blog";
+			location.href = "/";
 		}).fail(function(error) {
 			//실패했을 때
 			alert(JSON.stringify(error));
