@@ -1,5 +1,7 @@
 package com.tdsee.blog.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.tdsee.blog.model.User;
@@ -8,7 +10,8 @@ import com.tdsee.blog.model.User;
 // 자동으로 bean등록됨
 // @Repository 생략 가능
 public interface UserRepository extends JpaRepository<User, Integer> {
-
+	// SELECT * FROM user WHERE username = 1?;	
+	Optional<User> findByUsername(String username);
 }
 
 // JPA Naming query 전략
