@@ -45,4 +45,15 @@ public class BoardService {
 	public void deletePost(int id) {
 		boardRepository.deleteById(id);
 	}
+	
+	@Transactional
+	public void updatePost(int id, Board requestBoard) {
+		Board board = boardRepository.findById(id)
+				.orElseThrow(()-> {
+					return new IllegalArgumentException("Failed: Cannot find ID.");
+				});  // 영속화 
+		board.setTitle(requestBoard.getTitle());
+		board.setContent(requestBoard.getContent());
+		// 해당 함수 종료 시(Service 종료될 때) 트랜젝션 종료 (더티체킹) - 자동 업데이트
+	}
 }
