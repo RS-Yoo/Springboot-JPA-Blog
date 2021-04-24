@@ -34,3 +34,5 @@ spring:
     serialization:
       fail-on-empty-beans: false
       
+tdsee:
+  key: tdsee1234
