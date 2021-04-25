@@ -35,4 +35,4 @@ spring:
       fail-on-empty-beans: false
       
 tdsee:
-  key: tdsee1234
+  key: tdsee12345
