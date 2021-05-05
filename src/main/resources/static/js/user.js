@@ -30,8 +30,12 @@
 			dataType: "json" // 요청에 대한 응답이 왔을 때 기본적으로 모든 것이 문자열 // 생긴 게 json이라면 js오브젝트로 변경
 		}).done(function(resp) {
 			// 성공했을 때
-			alert("Registration complete.");
+			if(resp.status === 500) {
+				alert("Registration failed.");
+			}else {
+				alert("Registration complete.");
 			location.href = "/";
+			}
 		}).fail(function(error) {
 			//실패했을 때
 			alert(JSON.stringify(error));

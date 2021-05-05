@@ -9,17 +9,22 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tdsee.blog.dto.ReplySaveRequestDto;
 import com.tdsee.blog.model.Board;
+import com.tdsee.blog.model.Reply;
 import com.tdsee.blog.model.RoleType;
 import com.tdsee.blog.model.User;
 import com.tdsee.blog.repository.BoardRepository;
+import com.tdsee.blog.repository.ReplyRepository;
 import com.tdsee.blog.repository.UserRepository;
 
-@Service
-public class BoardService {
+import lombok.RequiredArgsConstructor;
 
-	@Autowired
-	private BoardRepository boardRepository;
+@Service
+@RequiredArgsConstructor
+public class BoardService {
+	private final BoardRepository boardRepository;
+	private final ReplyRepository replyRepository;
 
 	@Transactional
 	public void Post(Board board, User user) { // title, content
@@ -55,5 +60,15 @@ public class BoardService {
 		board.setTitle(requestBoard.getTitle());
 		board.setContent(requestBoard.getContent());
 		// 해당 함수 종료 시(Service 종료될 때) 트랜젝션 종료 (더티체킹) - 자동 업데이트
+	}
+	
+	@Transactional
+	public void postComment(ReplySaveRequestDto replySaveRequestDto) {
+		replyRepository.mSave(replySaveRequestDto.getUserId(), replySaveRequestDto.getBoardId(), replySaveRequestDto.getContent());
+	}
+	
+	@Transactional
+	public void deleteComment(int replyId) {
+		replyRepository.deleteById(replyId);
 	}
 }
